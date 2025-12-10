@@ -47,11 +47,9 @@ errors-tracer-frontend/
 │
 ├── public/               # Static assets
 ├── tailwind.config.js
-├── bun.lock
-├── bun.lock
-├── bun.lock
-├── bun.lock
-├── bun.lock
+├── next.config.ts
+├── postcss.config.mjs
+├── README.md
 └── package.json
 
 ```
