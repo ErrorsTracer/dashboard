@@ -20,15 +20,14 @@ The ErrorsTracer frontend provides an intuitive user interface that allows users
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-
-|-----------|---------|
-| **Next.js** | Core frontend framework |
-| **Redux Toolkit** | Global state management |
-| **TailwindCSS** | Styling and UI components |
-| **TypeScript** | Static typing |
-| **Axios** | API communication |
-| **Bun** | Package manager + runtime |
+| Technology        | Purpose                   |
+| ----------------- | ------------------------- |
+| **Next.js**       | Core frontend framework   |
+| **Redux Toolkit** | Global state management   |
+| **TailwindCSS**   | Styling and UI components |
+| **TypeScript**    | Static typing             |
+| **Axios**         | API communication         |
+| **Bun**           | Package manager + runtime |
 
 ---
 
