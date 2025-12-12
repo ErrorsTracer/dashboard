@@ -44,6 +44,8 @@ const slice = createSlice({
         authApi.endpoints.register.matchFulfilled,
         (state, action) => {
           // localStorage.setItem("accessToken", action.payload.accessToken);
+          state.authenticated = true;
+          state.user = action.payload.user;
         }
       )
       .addMatcher(authApi.endpoints.login.matchFulfilled, (state, action) => {

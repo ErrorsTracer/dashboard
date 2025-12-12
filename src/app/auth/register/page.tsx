@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AuthHook } from "@/hooks/authHook";
+import { setAuthCookie } from "@/services/actions";
 import {
   useGetPlansMutation,
   useRegisterMutation,
@@ -22,47 +23,19 @@ export default function Login() {
   const [getPlans, { data }] = useGetPlansMutation<any>();
   const [plan, setPlan] = useState<any>(null);
 
-  useEffect(() => {
-    getPlans(null);
-  }, []);
-
   const registerForm = useForm();
 
   const { push } = useRouter();
 
-  const { authenticated } = useTypedSelector((state) => state.auth);
+  const handleRegister = async (data: any) => {
+    try {
+      const res = await register({ ...data, plan: plan?.id }).unwrap();
 
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!authenticated) {
-      setTimeout(() => {
-        dispatch(toggleSystemLoading(false));
-      }, 500);
-    }
-  }, [authenticated]);
-
-  const handleRegister = (data: any) => {
-    register({ ...data, plan: plan?.id });
+      if (res.accessToken) {
+        await setAuthCookie(res.accessToken);
+      }
+    } catch (err) {}
   };
-
-  if (isSuccess)
-    return (
-      <div className="w-full h-full grid place-items-center">
-        <div className="bg-white  overflow-hidden relative w-[90%] md:w-[450px] px-3 py-8  rounded-[10px]">
-          <div className="  flex items-center justify-center mb-6">
-            <div className=" bg-gradient-to-r   from-[#c1fcda]  to-[#cbf0be] inline-block w-[70px] h-[70px] flex items-center justify-center rounded-full">
-              <i className="mdi mdi-email text-[40px] text-[#61c86e]"></i>
-            </div>
-          </div>
-          <div className="text-center px-4 sm:px-8 ">
-            <span className="">
-              {"We've sent you an email to complete your registration."}
-            </span>
-          </div>
-        </div>
-      </div>
-    );
 
   return (
     <div className=" w-full h-full grid place-items-center ">
