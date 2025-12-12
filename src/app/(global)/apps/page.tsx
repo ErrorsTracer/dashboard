@@ -160,7 +160,7 @@ const Applications = () => {
                 key={item.id}
                 link={
                   item.application.isActive
-                    ? `/apps/${item.application.id}/${item?.application.type?.type}`
+                    ? `/apps/${item.application.id}/errors`
                     : `/apps/${item.application.id}/settings`
                 }
                 isActive={item.application.isActive}
