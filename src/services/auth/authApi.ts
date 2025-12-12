@@ -2,7 +2,7 @@ import { api } from "../generic-api";
 
 export const authApi = api.injectEndpoints({
   endpoints: (build) => ({
-    register: build.mutation<{ accessToken: string }, any>({
+    register: build.mutation<{ accessToken: string; user: any }, any>({
       query: (body: any) => ({
         url: `/v0.1/auth/register`,
         method: "POST",

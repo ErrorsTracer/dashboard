@@ -9,8 +9,8 @@ type Props = Readonly<ReactPageProps>;
 
 export default function ReduxProvider({ children }: Props) {
   const cred = {
-    orgKey: "d56b878cd6b10c909bfec0441f",
-    appKey: "3ad7fd2a8cc8a7825b0ed3c3f3",
+    orgKey: process.env.NEXT_PUBLIC_ERRORS_TRACER_ORG_KEY as string,
+    appKey: process.env.NEXT_PUBLIC_ERRORS_TRACER_PRODUCTION_APP_KEY as string,
   };
 
   return (
