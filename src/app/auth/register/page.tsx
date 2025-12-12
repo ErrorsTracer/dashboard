@@ -11,11 +11,11 @@ import { toggleSystemLoading } from "@/services/system/systemSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const OtpLogin = () => {
+export default function Login() {
   AuthHook("unauthenticated");
   const [register, { isLoading, isSuccess, isError, error }] =
     useRegisterMutation<any>();
@@ -30,9 +30,6 @@ const OtpLogin = () => {
 
   const { push } = useRouter();
 
-  const query = useParams();
-
-  const { systemLoading } = useTypedSelector((state) => state.system);
   const { authenticated } = useTypedSelector((state) => state.auth);
 
   const dispatch = useAppDispatch();
@@ -71,11 +68,6 @@ const OtpLogin = () => {
     <div className=" w-full h-full grid place-items-center ">
       <div className="border-[1px] flex md:flex-row flex-col items-center justify-center rounded-[15px]">
         <div className=" overflow-hidden  relative w-[90%] md:w-[450px] md:px-8 px-2 py-4">
-          {/* {isLoading && (
-            <div className="absolute top-0 left-0 bg-white w-full h-full flex items-center justify-center z-50">
-              <Loading />
-            </div>
-          )} */}
           <form
             onSubmit={registerForm.handleSubmit(handleRegister)}
             className="flex flex-col justify-center gap-3 h-full"
@@ -170,7 +162,7 @@ const OtpLogin = () => {
             <div className="text-center">
               <p className="text-sm">
                 {"Already have account"}?{" "}
-                <Link className="underline" href="/login">
+                <Link className="underline" href="/auth/login">
                   login instead.
                 </Link>
               </p>
@@ -180,10 +172,4 @@ const OtpLogin = () => {
       </div>
     </div>
   );
-};
-
-OtpLogin.getLayout = (page: ReactElement) => {
-  return <div className="h-screen">{page}</div>;
-};
-
-export default OtpLogin;
+}

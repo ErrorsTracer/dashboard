@@ -12,6 +12,8 @@ export const Sidebar = () => {
 
   const dispatch = useAppDispatch();
 
+  // console.log(x.firstName);
+
   return (
     <div className="flex xl:w-[300px] h-screen flex-col p-3">
       <div className="bg-sidebar h-full relative rounded-[20px]">
@@ -122,7 +124,7 @@ export const Sidebar = () => {
                   />
                 </svg>
               </SidebarItem> */}
-              {/* <SidebarItem link="/settings" title={"Settings"}>
+              <SidebarItem link="/settings" title={"Settings"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -142,7 +144,7 @@ export const Sidebar = () => {
                     d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   />
                 </svg>
-              </SidebarItem> */}
+              </SidebarItem>
               {/* <SidebarItem link="/invitations" title={"Invitations"}>
             <i className="mdi mdi-account-multiple-outline"></i>
           </SidebarItem> */}
